@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Result</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<section th:replace="components/elapsedTime :: interceptor"></section>
+	<div class="container">
+		<a th:href="@{/form}" class="btn btn-success btn-lg my-3">Go Back</a>
+		<ul class="list-group my-2">
+			<li class="list-group-item active">Form Result</li>
+			<li th:text="${user.id}" class="list-group-item"></li>
+			<li th:text="${user.name}" class="list-group-item"></li>
+			<li th:text="${user.surname}" class="list-group-item"></li>
+			<li th:text="${user.username}" class="list-group-item"></li>
+			<li th:text="${user.password}" class="list-group-item"></li>
+			<li th:text="${user.email}" class="list-group-item"></li>
+			<li th:text="${user.account}" class="list-group-item"></li>
+			<li th:text="${#calendars.format(user.birth, 'dd/MM/yyyy')}" class="list-group-item"></li>
+			<li th:text="${user.country.id}" class="list-group-item"></li>
+			<li th:text="${user.country.code}" class="list-group-item"></li>
+			<li th:text="${user.country.name}" class="list-group-item"></li>
+			<li th:text="'User is enabled: ' + ${user.enabled}" class="list-group-item"></li>
+			<li th:text="'Gender: ' + ${user.gender}" class="list-group-item"></li>
+			<li th:text="'Secret value: ' + ${user.secretValue}" class="list-group-item"></li>
+		</ul>
+		<ul class="list-group my-4">
+			<li class="list-group-item active">Roles</li>
+			<li th:each="role : ${user.roles}" th:text="${role.name}" class="list-group-item"></li>
+		</ul>
+	</div>
+</body>
+</html>
